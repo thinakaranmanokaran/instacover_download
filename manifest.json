@@ -2,13 +2,14 @@
   "name": "InstaCover – Instagram Cover Downloader",
   "short_name": "InstaCover",
   "description": "Download Instagram Reel and Post cover images instantly.",
-  "start_url": "/",
+  "start_url": "/instacover_download/",
+  "scope": "/instacover_download/",
   "display": "standalone",
   "background_color": "#fafafa",
   "theme_color": "#dd2a7b",
   "icons": [
     {
-      "src": "/icon-512.png",
+      "src": "/instacover_download/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

@@ -1,26 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>InstaCover – Download Instagram Reel & Post Cover Images Free</title>
+    <meta name="description" content="Download Instagram Reel and Post cover images instantly. Free Instagram thumbnail downloader tool." />
+    <meta name="keywords" content="instagram cover downloader, instagram reel thumbnail downloader, download instagram cover image, instagram post thumbnail" />
+    <link rel="canonical" href="https://instacover.app" />
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:title" content="Download Instagram Reel & Post Covers Instantly" />
+    <meta property="og:description" content="Free Instagram cover downloader. Paste a Reel or Post link and download the thumbnail." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://instacover.app" />
+    <meta property="og:site_name" content="InstaCover" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <meta name="twitter:title" content="Download Instagram Reel & Post Covers Instantly" />
+    <meta name="twitter:description" content="Free Instagram cover downloader. Paste a Reel or Post link and download the thumbnail." />
+    <meta name="twitter:image" content="/og-image.png" />
 
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#dd2a7b" />
+    <link rel="apple-touch-icon" href="/icon-512.png" />
+    <link rel="icon" type="image/png" href="/icon-512.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "InstaCover",
+      "description": "Download Instagram Reel and Post cover images instantly. Free Instagram thumbnail downloader tool.",
+      "url": "https://instacover.app",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

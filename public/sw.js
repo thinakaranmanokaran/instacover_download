@@ -1,4 +1,4 @@
-const CACHE_NAME = 'instacover-v1';
+const CACHE_NAME = 'instacover-v2';
 const OFFLINE_URLS = ['/instacover_download/'];
 
 self.addEventListener('install', (event) => {
@@ -20,7 +20,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match('/'))
+      fetch(event.request).catch(() => caches.match('/instacover_download/'))
     );
   }
 });

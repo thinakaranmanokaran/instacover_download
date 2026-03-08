@@ -13,7 +13,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top Ad */}
-      <AdPlaceholder label="Ad Space — Top Banner" />
+      {/* <AdPlaceholder label="Ad Space — Top Banner" /> */}
 
       <main className="flex-1 flex flex-col items-center px-4 pt-12 pb-8">
         {/* Hero */}
@@ -42,11 +42,11 @@ const Index = () => {
         )}
 
         {/* Result Ad */}
-        {result && (
-          <div className="mt-8">
-            <AdPlaceholder label="Ad Space — Result Section" />
+        {/* {result && (
+          <div className="mt-8 w-full">
+            <AdPlaceholder label="Ad Space — Results Section" />
           </div>
-        )}
+        )} */}
 
         {/* Suggested Tools */}
         <SuggestedTools />
@@ -54,7 +54,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="border-t border-border py-6 text-center">
-        <AdPlaceholder label="Ad Space — Footer" />
+        {/* <AdPlaceholder label="Ad Space — Footer" /> */}
         <p className="text-xs text-muted-foreground mt-4">
           © {new Date().getFullYear()} InstaCover. Free Instagram cover image downloader.
         </p>

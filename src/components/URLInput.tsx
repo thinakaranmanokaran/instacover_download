@@ -16,7 +16,7 @@ const URLInput = ({ onResult }: URLInputProps) => {
     e.preventDefault();
     setError("");
 
-    const validation = validateInstagramUrl(url);
+    const validation = validateInstagramUrl(url.trim());
     if (!validation.valid) {
       setError("Invalid Instagram link. Please enter a valid Reel or Post URL.");
       return;

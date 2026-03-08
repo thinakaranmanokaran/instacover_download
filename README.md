@@ -1,73 +1,124 @@
-# Welcome to your Lovable project
 
-## Project info
+# InstaCover
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+### Download Instagram Reel & Post Cover Images Instantly
 
-## How can I edit this code?
+<p>
+A fast and minimal tool to extract Instagram Reel and Post cover images.  
+Paste a link and download the thumbnail instantly — no login required.
+</p>
 
-There are several ways of editing your application.
+<br>
 
-**Use Lovable**
+<div align="center">
+<img src="public/icon-512.png" alt="InstaCover Preview" width="200"/>
+</div>
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+<br><br>
 
-Changes made via Lovable will be committed automatically to this repo.
+<div align="center">
+<a href="https://thinakaranmanokaran.github.io/instacover_download">
+<img src="https://img.shields.io/badge/🚀%20Open%20App-InstaCover-dd2a7b?style=for-the-badge"/>
+</a>
+</div>
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## ✨ Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* 📥 Download Instagram **Reel cover images**
+* 🖼 Download **Post thumbnails**
+* ⚡ Instant extraction
+* 🎨 Minimal Instagram-style UI
+* 📱 Installable as **PWA**
+* 🔒 No login required
+* 🆓 Completely free
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🛠 Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+* **React**
+* **Vite**
+* **TypeScript**
+* **Tailwind CSS**
+* **React Query**
+* **ShadCN UI**
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🌐 Live Website
+### https://thinakaranmanokaran.github.io/instacover_download
+
+
+---
+
+## 📸 Preview
+
+<div align="center">
+
+<img src="public/og-image.png" width="700"/>
+
+</div>
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+components/
+pages/
+lib/
+public/
+manifest.json
+sw.js
+```
+
+---
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/thinakaranmanokaran/instacover-download.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build project:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 👨‍💻 Author
 
-## What technologies are used for this project?
+### Thinakaran Manokaran
 
-This project is built with:
+🌐 https://thinakaran.dev
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 📄 License
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+This project is licensed under the **MIT License**.
 
-## Can I connect a custom domain to my Lovable project?
+See the [LICENSE](LICENSE) file for details.
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Developed by **Thinakaran Manokaran**

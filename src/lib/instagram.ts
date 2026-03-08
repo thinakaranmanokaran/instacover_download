@@ -1,13 +1,28 @@
-export const INSTAGRAM_URL_REGEX = /^https?:\/\/(www\.)?instagram\.com\/(reel|p)\/([A-Za-z0-9_-]+)\/?/;
+export const INSTAGRAM_URL_REGEX = /^https?:\/\/(www\.)?instagram\.com\/(reel|p)\/([A-Za-z0-9_-]+)(\/|\?|$)/;
 
 export function validateInstagramUrl(url: string): { valid: boolean; type?: 'reel' | 'post'; id?: string } {
-  const match = url.trim().match(INSTAGRAM_URL_REGEX);
-  if (!match) return { valid: false };
-  return {
-    valid: true,
-    type: match[2] === 'reel' ? 'reel' : 'post',
-    id: match[3],
-  };
+  try {
+    const parsed = new URL(url.trim());
+
+    if (!parsed.hostname.includes("instagram.com")) {
+      return { valid: false };
+    }
+
+    const parts = parsed.pathname.split("/").filter(Boolean);
+
+    if (parts[0] === "reel" || parts[0] === "p") {
+      return {
+        valid: true,
+        type: parts[0] === "reel" ? "reel" : "post",
+        id: parts[1]
+      };
+    }
+
+    return { valid: false };
+
+  } catch {
+    return { valid: false };
+  }
 }
 
 export interface CoverResult {
@@ -23,34 +38,41 @@ export interface CoverResult {
  * a backend proxy (e.g., Lovable Cloud edge function) is needed.
  */
 export async function fetchCoverImage(url: string): Promise<CoverResult> {
-  const oembedUrl = `https://graph.facebook.com/v18.0/instagram_oembed?url=${encodeURIComponent(url)}&access_token=&omitscript=true`;
-  
-  // Try oEmbed first (may fail without token)
-  // Fallback: use a noembed proxy
-  const proxyUrl = `https://noembed.com/embed?url=${encodeURIComponent(url)}`;
-  
-  const response = await fetch(proxyUrl);
-  if (!response.ok) {
-    throw new Error('This post is private or cannot be accessed.');
-  }
-  
-  const data = await response.json();
-  
-  if (data.error) {
-    throw new Error('This post is private or cannot be accessed.');
-  }
+  try {
+    const cleanUrl = url.split("?")[0];
 
-  if (!data.thumbnail_url) {
-    throw new Error('This post is private or cannot be accessed.');
-  }
+    // public CORS proxy
+    const proxy = "https://api.allorigins.win/raw?url=";
 
-  return {
-    imageUrl: data.thumbnail_url,
-    title: data.title || data.author_name || 'Instagram Cover',
-    resolution: data.thumbnail_width && data.thumbnail_height 
-      ? `${data.thumbnail_width} × ${data.thumbnail_height}` 
-      : undefined,
-  };
+    const response = await fetch(proxy + encodeURIComponent(cleanUrl));
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    const html = await response.text();
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    const image =
+      doc.querySelector('meta[property="og:image"]')?.getAttribute("content");
+
+    const title =
+      doc.querySelector('meta[property="og:title"]')?.getAttribute("content");
+
+    if (!image) {
+      throw new Error();
+    }
+
+    return {
+      imageUrl: image,
+      title: title || "Instagram Cover",
+      resolution: "1080 × 1920"
+    };
+  } catch {
+    throw new Error("Unable to extract cover image.");
+  }
 }
 
 export async function downloadImage(imageUrl: string, filename: string = 'instacover.jpg') {

@@ -8,7 +8,7 @@ const tools = [
 
 const SuggestedTools = () => (
   <section className="w-full max-w-3xl mx-auto mt-16 mb-8">
-    <h2 className="text-lg font-semibold text-foreground mb-4">More Tools</h2>
+    <h2 className="text-lg font-semibold text-foreground mb-4">More Tools <span className="text-black/40">(Coming soon...)</span></h2>
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {tools.map((tool) => (
         <button

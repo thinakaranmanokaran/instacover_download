@@ -1,5 +1,5 @@
 const CACHE_NAME = 'instacover-v1';
-const OFFLINE_URLS = ['/'];
+const OFFLINE_URLS = ['/instacover_download/'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

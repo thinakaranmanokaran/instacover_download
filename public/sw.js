@@ -1,9 +1,11 @@
 const CACHE_NAME = "instacover-v3";
 
+const BASE_PATH = self.location.pathname.replace("sw.js", "");
+
 const OFFLINE_URLS = [
-  "/instacover_download/",
-  "/instacover_download/index.html",
-  "/instacover_download/manifest.json"
+  BASE_PATH,
+  BASE_PATH + "index.html",
+  BASE_PATH + "manifest.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -28,7 +30,7 @@ self.addEventListener("fetch", (event) => {
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request).catch(() =>
-        caches.match("/instacover_download/index.html")
+        caches.match(BASE_PATH + "index.html")
       )
     );
   }

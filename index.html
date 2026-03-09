@@ -7,7 +7,7 @@
     <meta name="description" content="Download Instagram Reel and Post cover images instantly. Free Instagram thumbnail downloader tool." />
     <meta name="keywords" content="instagram cover downloader, instagram reel thumbnail downloader, download instagram cover image, instagram post thumbnail" />
     <meta name="author" content="Thinakaran Manokaran" />
-    <link rel="canonical" href="https://thinakaranmanokaran.github.io/instacover_download" />
+    <link rel="canonical" href="https://thinakaranmanokaran.github.io/instacover_download/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Download Instagram Reel & Post Covers Instantly" />
@@ -54,7 +54,11 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {});
+          navigator.serviceWorker
+            .register('/instacover_download/sw.js', {
+              scope: '/instacover_download/'
+            })
+            .catch(() => {});
         });
       }
     </script>

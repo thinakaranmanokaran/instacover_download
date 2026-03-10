@@ -7,6 +7,15 @@
   "display": "standalone",
   "background_color": "#fafafa",
   "theme_color": "#dd2a7b",
+  "share_target": {
+    "action": "/instacover_download/share",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
   "icons": [
     {
       "src": "/instacover_download/icon-512.png",

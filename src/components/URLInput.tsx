@@ -1,16 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search, Loader2 } from "lucide-react";
 import { validateInstagramUrl, fetchCoverImage, CoverResult } from "@/lib/instagram";
 import { trackEvent } from "@/lib/analytics";
 
 interface URLInputProps {
   onResult: (result: CoverResult) => void;
+  initialUrl?: string | null;
 }
 
-const URLInput = ({ onResult }: URLInputProps) => {
+const URLInput = ({ onResult, initialUrl }: URLInputProps) => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleAutoExtract = async (shared: string) => {
+    setLoading(true);
+    try {
+      const result = await fetchCoverImage(shared);
+      onResult(result);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (initialUrl) {
+      setUrl(initialUrl);
+      handleAutoExtract(initialUrl);
+    }
+  }, [initialUrl]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

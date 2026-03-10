@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import URLInput from "@/components/URLInput";
 import ImagePreview from "@/components/ImagePreview";
@@ -9,6 +9,20 @@ import { CoverResult } from "@/lib/instagram";
 
 const Index = () => {
   const [result, setResult] = useState<CoverResult | null>(null);
+  const [sharedUrl, setSharedUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    const url =
+      params.get("url") ||
+      params.get("text");
+
+    if (url) {
+      console.log("Shared Instagram link:", url);
+      setSharedUrl(url);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -38,7 +52,7 @@ const Index = () => {
         {result ? (
           <ImagePreview result={result} onReset={() => setResult(null)} />
         ) : (
-          <URLInput onResult={setResult} />
+          <URLInput onResult={setResult} initialUrl={sharedUrl} />
         )}
 
         {/* Result Ad */}

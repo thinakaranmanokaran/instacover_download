@@ -6,21 +6,31 @@ import SuggestedTools from "@/components/SuggestedTools";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import InstallPopup from "@/components/InstallPopup";
 import { CoverResult } from "@/lib/instagram";
+import { useParams } from "react-router-dom"
 
 const Index = () => {
   const [result, setResult] = useState<CoverResult | null>(null);
   const [sharedUrl, setSharedUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const hash = window.location.hash;
 
-    const url =
-      params.get("url") ||
-      params.get("text");
+    if (!hash.includes("?")) return;
 
-    if (url) {
-      console.log("Shared Instagram link:", url);
-      setSharedUrl(url);
+    const queryString = hash.split("?")[1];
+
+    const params = new URLSearchParams(queryString);
+
+    let shared = params.get("url") || params.get("text");
+
+    // Fix truncated Instagram URLs
+    if (shared && hash.includes("url=")) {
+      shared = decodeURIComponent(hash.split("url=")[1]);
+    }
+
+    if (shared) {
+      console.log("Full Instagram link:", shared);
+      setSharedUrl(shared);
     }
   }, []);
 
